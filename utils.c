@@ -2,13 +2,14 @@
 #include "database.h"
 
 int calculate_experience(Employee emp) {
-    // Текущая дата (можно изменить)
+    // Фиксированная текущая дата
     int current_year = 2025;
     int current_month = 12;
     int current_day = 15;
     
     int years = current_year - emp.hire_date.year;
     
+    // Корректировка если день приема еще не наступил в этом году
     if (current_month < emp.hire_date.month ||
         (current_month == emp.hire_date.month && 
          current_day < emp.hire_date.day)) {
