@@ -3,16 +3,16 @@
 
 #include "database.h"
 
-// Загрузка из файла в массив
-int load_employees(Employee* arr, int* size, const char* filename);
+// Загрузка с созданием тестовых данных
+int load_from_file(Employee* arr, int* size, char* filename);
 
-// Сохранение массива в файл
-int save_employees(Employee* arr, int size, const char* filename);
+// Сохранение всего массива
+int save_to_file(Employee* arr, int size, char* filename);
 
-// Чтение из файла (задание 3)
-int input_file(const char* filename, Employee* arr);
+// Простое чтение файла
+int input_file(char* filename, Employee* arr);
 
-// Запись в файл (задание 3)
-int output_file(const char* filename, Employee* arr, int n);
+// Простая запись в файл
+int output_file(char* filename, Employee* arr, int n);
 
-#endif // FILEIO_H
+#endif
