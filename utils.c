@@ -1,53 +1,42 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "database.h"
 
-// Расчет стажа работы
-int calculate_experience(Employee emp, Date current_date) {
-    int years = current_date.year - emp.hire_date.year;
+int calculate_experience(Employee emp) {
+    // Текущая дата (можно изменить)
+    int current_year = 2025;
+    int current_month = 12;
+    int current_day = 15;
     
-    // Корректировка, если текущая дата раньше даты приема в этом году
-    if (current_date.month < emp.hire_date.month ||
-        (current_date.month == emp.hire_date.month && 
-         current_date.day < emp.hire_date.day)) {
+    int years = current_year - emp.hire_date.year;
+    
+    if (current_month < emp.hire_date.month ||
+        (current_month == emp.hire_date.month && 
+         current_day < emp.hire_date.day)) {
         years--;
     }
     
     return years;
 }
 
-// Очистка буфера ввода
-void clear_input_buffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+void clear_buffer() {
+    while (getchar() != '\n');
 }
 
-// Получение целого числа с проверкой диапазона
-int get_integer_input(const char* prompt, int min, int max) {
-    int value;
-    int valid_input = 0;
+void show_experienced(Employee* arr, int size) {
+    int count = 0;
+    printf("\nСотрудники со стажем > 10 лет:\n");
     
-    while (!valid_input) {
-        printf("%s", prompt);
-        if (scanf("%d", &value) == 1) {
-            if (value >= min && value <= max) {
-                valid_input = 1;
-            } else {
-                printf("Ошибка: значение должно быть от %d до %d\n", min, max);
-            }
-        } else {
-            printf("Ошибка: введите целое число\n");
-            clear_input_buffer();
+    for (int i = 0; i < size; i++) {
+        int exp = calculate_experience(arr[i]);
+        if (exp > 10) {
+            printf("%d. ", i+1);
+            print_employee(arr[i]);
+            printf("  Стаж: %d лет\n", exp);
+            count++;
         }
     }
     
-    clear_input_buffer();
-    return value;
-}
-
-// Печать разделительной линии
-void print_separator() {
-    printf("================================================\n");
+    if (count == 0) {
+        printf("Не найдено\n");
+    }
 }
