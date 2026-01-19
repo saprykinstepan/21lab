@@ -3,13 +3,13 @@
 
 #include "database.h"
 
-// Расчет стажа работы
+// Расчет стажа
 int calculate_experience(Employee emp);
 
-// Очистка буфера ввода
+// Очистка буфера
 void clear_buffer();
 
-// Показать сотрудников со стажем > 10 лет
+// Показать стаж > 10 лет
 void show_experienced(Employee* arr, int size);
 
 #endif
