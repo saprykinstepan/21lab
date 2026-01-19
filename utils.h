@@ -3,10 +3,13 @@
 
 #include "database.h"
 
-// Вспомогательные функции
-int calculate_experience(Employee emp, Date current_date);
-void clear_input_buffer();
-int get_integer_input(const char* prompt, int min, int max);
-void print_separator();
+// Расчет стажа работы
+int calculate_experience(Employee emp);
 
-#endif // UTILS_H
+// Очистка буфера ввода
+void clear_buffer();
+
+// Показать сотрудников со стажем > 10 лет
+void show_experienced(Employee* arr, int size);
+
+#endif
