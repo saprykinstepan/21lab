@@ -1,16 +1,14 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-#define MAX_EMPLOYEES 100
+#define MAX 100
 
-// Структура для даты
 typedef struct {
     int day;
     int month;
     int year;
 } Date;
 
-// Структура для сотрудника
 typedef struct {
     char surname[50];
     char name[50];
@@ -20,18 +18,31 @@ typedef struct {
     Date hire_date;
 } Employee;
 
-// Функции работы с базой данных
+// Добавление нового сотрудника
 int add_employee(Employee* arr, int* size);
-int print_all_employees(Employee* arr, int size);
-int print_employee(Employee emp);
+
+// Вывод одного сотрудника
+void print_employee(Employee emp);
+
+// Вывод всех сотрудников
+int print_all(Employee* arr, int size);
+
+// Редактирование записи
 int edit_employee(Employee* arr, int size);
+
+// Поиск по фамилии
 int search_employee(Employee* arr, int size);
-int sort_employees(Employee* arr, int size);
-int show_experienced_employees(Employee* arr, int size);
 
-// Функции сравнения для сортировки
-int compare_by_surname(const void* a, const void* b);
-int compare_by_position(const void* a, const void* b);
-int compare_by_date(const void* a, const void* b);
+// Меню сортировки
+int sort_array(Employee* arr, int size);
 
-#endif // DATABASE_H
+// Сортировка по фамилии
+void sort_by_surname(Employee* arr, int size);
+
+// Сортировка по должности
+void sort_by_position(Employee* arr, int size);
+
+// Сортировка по дате приема
+void sort_by_date(Employee* arr, int size);
+
+#endif
