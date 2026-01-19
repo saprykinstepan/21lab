@@ -8,6 +8,7 @@ int load_from_file(Employee* arr, int* size, char* filename) {
     if (!f) {
         printf("Файл не найден, создаю данные...\n");
         
+        // Первый тестовый сотрудник
         strcpy(arr[0].surname, "Иванов");
         strcpy(arr[0].name, "Иван");
         strcpy(arr[0].otchestvo, "Иванович");
@@ -17,6 +18,7 @@ int load_from_file(Employee* arr, int* size, char* filename) {
         arr[0].hire_date.month = 5;
         arr[0].hire_date.year = 2010;
         
+        // Второй тестовый сотрудник
         strcpy(arr[1].surname, "Петрова");
         strcpy(arr[1].name, "Мария");
         strcpy(arr[1].otchestvo, "Сергеевна");
